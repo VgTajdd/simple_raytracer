@@ -1,2 +1,2 @@
-# my_first_raytracer
-My first raytracer using pure C++
+# Simple Raytracer in C++
+Simple raytracer developed using pure C++
