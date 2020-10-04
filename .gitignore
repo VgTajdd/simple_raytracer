@@ -1,0 +1,13 @@
+.vs/
+x64/
+Debug/
+Release/
+*.tlog
+*.user
+*.obj
+*.ilk
+*.log
+*.pdb
+
+*.ppm
+*.png
