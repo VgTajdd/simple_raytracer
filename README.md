@@ -1,7 +1,7 @@
 # Simple Raytracer in C++
 Simple raytracer developed using pure C++
 
-![example workflow](https://github.com/VgTajdd/simple_raytracer/actions/workflows/msbuild.yml/badge.svg?main)
+[![MSBuild](https://github.com/VgTajdd/simple_raytracer/actions/workflows/msbuild.yml/badge.svg?main1)](https://github.com/VgTajdd/simple_raytracer/actions/workflows/msbuild.yml)
 
 ![ss_gen_capture](https://user-images.githubusercontent.com/51887591/95026634-5a7d9380-0658-11eb-8004-be61ac2aafbe.png)
 
