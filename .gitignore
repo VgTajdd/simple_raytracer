@@ -2,6 +2,8 @@
 x64/
 Debug/
 Release/
+build/
+
 *.tlog
 *.user
 *.obj
