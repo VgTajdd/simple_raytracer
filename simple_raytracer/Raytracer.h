@@ -24,17 +24,17 @@ struct IntersectionInfo
 
 struct RaytracerImage
 {
-	RaytracerImage( const uint32_t w, const uint32_t h ):
+	RaytracerImage( const unsigned int w, const unsigned int h ):
 		width( w ), height( h )
 	{
 		data.resize( h, std::vector<Vec3>() );
-		for ( uint32_t i = 0; i < w; i++ )
+		for ( unsigned int i = 0; i < w; i++ )
 		{
 			data[i].resize( w );
 		}
 	}
-	uint32_t width;
-	uint32_t height;
+	unsigned int width;
+	unsigned int height;
 	std::vector<std::vector<Vec3>> data;
 };
 
@@ -52,7 +52,7 @@ public:
 class Raytracer
 {
 public:
-	explicit Raytracer( const uint32_t w, uint32_t h ) : m_width( w ), m_height( h ) {}
+	explicit Raytracer( const unsigned int w, unsigned int h ) : m_width( w ), m_height( h ) {}
 	void setEyeLocation( const Vec3& eyeLocation )
 	{
 		m_eyeLocation = eyeLocation;
@@ -77,8 +77,8 @@ private:
 
 private:
 	Vec3 m_eyeLocation;
-	uint32_t m_width;
-	uint32_t m_height;
+	unsigned int m_width;
+	unsigned int m_height;
 };
 
 #endif // !RAYTRACER_H_

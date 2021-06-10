@@ -40,14 +40,14 @@ public:
 		SPHERE,
 	};
 public:
-	explicit SceneObject( const uint32_t objectId, const OBJ_TYPE& type ) : m_objectId( objectId ), m_type( type ) {}
+	explicit SceneObject( const unsigned int objectId, const OBJ_TYPE& type ) : m_objectId( objectId ), m_type( type ) {}
 	virtual ~SceneObject() = default;
 	const int objectId() const { return m_objectId; }
 	virtual bool intersects( const Ray& ray, Vec3& pi, Vec3& normal, float& t ) = 0;
 	const Material& material() const { return m_material; }
 	Material& pvtMaterial() { return m_material; }
 private:
-	uint32_t m_objectId;
+	unsigned int m_objectId;
 	OBJ_TYPE m_type;
 	Material m_material;
 };
@@ -55,7 +55,7 @@ private:
 class Sphere : public SceneObject
 {
 public:
-	explicit Sphere( const Vec3& center, const float radious, const uint32_t id ) :
+	explicit Sphere( const Vec3& center, const float radious, const unsigned int id ) :
 		SceneObject( id, OBJ_TYPE::SPHERE ),
 		m_center( center ), m_radious( radious ) {}
 
@@ -70,7 +70,7 @@ private:
 class Triangle : public SceneObject
 {
 public:
-	explicit Triangle( const Vec3& v1, const Vec3& v2, const Vec3& v3, const uint32_t id ) :
+	explicit Triangle( const Vec3& v1, const Vec3& v2, const Vec3& v3, const unsigned int id ) :
 		SceneObject( id, OBJ_TYPE::TRIANGLE ),
 		m_v1( v1 ), m_v2( v2 ), m_v3( v3 )
 	{
@@ -103,7 +103,7 @@ public:
 		return object;
 	}
 
-	static uint32_t nextObjectId;
+	static unsigned int nextObjectId;
 };
 
 class Scene

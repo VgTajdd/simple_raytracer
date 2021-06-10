@@ -6,7 +6,7 @@
 
 #include "Scene.h"
 
-uint32_t ObjectsFactory::nextObjectId = 1;
+unsigned int ObjectsFactory::nextObjectId = 1;
 
 bool Sphere::intersects( const Ray& ray, Vec3& pi, Vec3& normal, float& t )
 {

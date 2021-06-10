@@ -11,9 +11,9 @@
 RaytracerImage Raytracer::raytrace( const Scene& scene, const int maxDepth )
 {
 	RaytracerImage image( m_width, m_height );
-	for ( uint32_t r = 0; r < m_height; r++ )
+	for ( unsigned int r = 0; r < m_height; r++ )
 	{
-		for ( uint32_t c = 0; c < m_width; c++ )
+		for ( unsigned int c = 0; c < m_width; c++ )
 		{
 			Ray ray( m_eyeLocation, Vec3( c + 0.5f - m_width / 2, ( m_height / 2 ) - ( r + 0.5f ), 0 ) - m_eyeLocation );
 			IntersectionInfo intersection = intersect( scene, ray );
