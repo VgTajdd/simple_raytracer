@@ -9,6 +9,7 @@
 ## TOOLS - TESTS - CI - DOC
 
 - [X] Use CMake
+- [ ] Use clang-format (Google Style)
 - [X] Use GitHub actions
 - [x] Add tests (gtest)
 - [ ] Add/Update documentation
