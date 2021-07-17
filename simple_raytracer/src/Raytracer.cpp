@@ -9,7 +9,6 @@
 #include "Ray.h"
 #include "Scene.h"
 
-
 RaytracerImage Raytracer::raytrace(const Scene& scene, const int maxDepth) {
   RaytracerImage image(m_width, m_height);
   for (unsigned int r = 0; r < m_height; r++) {
@@ -120,7 +119,6 @@ Vec3 Raytracer::computeColor(const Scene& scene, const Ray& ray,
 
 #include <fstream>
 #include <iostream>
-
 
 bool RaytracerImageSaver::save(const RaytracerImage& image,
                                const char* filename, const FORMAT& format) {
