@@ -9,12 +9,17 @@
 
 #include <map>
 #include <vector>
-#include "Vec3.h"
+
 #include "Ray.h"
+#include "Vec3.h"
 
 struct Light
 {
-	explicit Light( const Vec3& pos, const Vec3& col, const bool point ) : position( pos ), color( col ), isPoint( point ) {}
+	explicit Light( const Vec3& pos, const Vec3& col, const bool point )
+		: position( pos )
+		, color( col )
+		, isPoint( point )
+	{}
 	Vec3 position;
 	Vec3 color;
 	bool isPoint;
@@ -39,13 +44,27 @@ public:
 		TRIANGLE,
 		SPHERE,
 	};
+
 public:
-	explicit SceneObject( const unsigned int objectId, const OBJ_TYPE& type ) : m_objectId( objectId ), m_type( type ) {}
+	explicit SceneObject( const unsigned int objectId, const OBJ_TYPE& type )
+		: m_objectId( objectId )
+		, m_type( type )
+	{}
 	virtual ~SceneObject() = default;
-	const int objectId() const { return m_objectId; }
+	const int objectId() const
+	{
+		return m_objectId;
+	}
 	virtual bool intersects( const Ray& ray, Vec3& pi, Vec3& normal, float& t ) = 0;
-	const Material& material() const { return m_material; }
-	Material& pvtMaterial() { return m_material; }
+	const Material& material() const
+	{
+		return m_material;
+	}
+	Material& pvtMaterial()
+	{
+		return m_material;
+	}
+
 private:
 	unsigned int m_objectId;
 	OBJ_TYPE m_type;
@@ -55,13 +74,22 @@ private:
 class Sphere : public SceneObject
 {
 public:
-	explicit Sphere( const Vec3& center, const float radious, const unsigned int id ) :
-		SceneObject( id, OBJ_TYPE::SPHERE ),
-		m_center( center ), m_radious( radious ) {}
+	explicit Sphere( const Vec3& center, const float radious, const unsigned int id )
+		: SceneObject( id, OBJ_TYPE::SPHERE )
+		, m_center( center )
+		, m_radious( radious )
+	{}
 
-	const Vec3& center() const { return m_center; }
-	const float radious() const { return m_radious; }
+	const Vec3& center() const
+	{
+		return m_center;
+	}
+	const float radious() const
+	{
+		return m_radious;
+	}
 	bool intersects( const Ray& ray, Vec3& pi, Vec3& normal, float& t );
+
 private:
 	Vec3 m_center;
 	float m_radious;
@@ -70,18 +98,30 @@ private:
 class Triangle : public SceneObject
 {
 public:
-	explicit Triangle( const Vec3& v1, const Vec3& v2, const Vec3& v3, const unsigned int id ) :
-		SceneObject( id, OBJ_TYPE::TRIANGLE ),
-		m_v1( v1 ), m_v2( v2 ), m_v3( v3 )
+	explicit Triangle( const Vec3& v1, const Vec3& v2, const Vec3& v3, const unsigned int id )
+		: SceneObject( id, OBJ_TYPE::TRIANGLE )
+		, m_v1( v1 )
+		, m_v2( v2 )
+		, m_v3( v3 )
 	{
 		m_normal = ( m_v2 - m_v1 ).cross( m_v3 - m_v2 ).normalized();
 	}
 
 	bool intersects( const Ray& ray, Vec3& pi, Vec3& normal, float& t );
 
-	const Vec3& v1() const { return m_v1; }
-	const Vec3& v2() const { return m_v2; }
-	const Vec3& v3() const { return m_v3; }
+	const Vec3& v1() const
+	{
+		return m_v1;
+	}
+	const Vec3& v2() const
+	{
+		return m_v2;
+	}
+	const Vec3& v3() const
+	{
+		return m_v3;
+	}
+
 private:
 	Vec3 m_v1;
 	Vec3 m_v2;
@@ -111,8 +151,7 @@ class Scene
 public:
 	bool addObject( SceneObject* object )
 	{
-		if ( m_objects.find( object->objectId() ) != m_objects.end() )
-			return false;
+		if ( m_objects.find( object->objectId() ) != m_objects.end() ) return false;
 
 		m_objects.emplace( object->objectId(), object );
 		return true;
@@ -122,8 +161,15 @@ public:
 		m_lights.emplace_back( pos, col, point );
 		return true;
 	}
-	const std::map<int, SceneObject*>& objects() const { return m_objects; }
-	const std::vector<Light>& lights() const { return m_lights; }
+	const std::map<int, SceneObject*>& objects() const
+	{
+		return m_objects;
+	}
+	const std::vector<Light>& lights() const
+	{
+		return m_lights;
+	}
+
 private:
 	std::map<int, SceneObject*> m_objects;
 	std::vector<Light> m_lights;

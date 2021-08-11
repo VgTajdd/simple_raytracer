@@ -1,0 +1,7 @@
+{
+    "clang-format.executable": "clang-format",
+    "clang-format.fallbackStyle": "Microsoft",
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+}

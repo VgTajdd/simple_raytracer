@@ -5,8 +5,9 @@
 // ========================================================================= //
 
 #include "Raytracer.h"
-#include "Scene.h"
+
 #include "Ray.h"
+#include "Scene.h"
 
 RaytracerImage Raytracer::raytrace( const Scene& scene, const int maxDepth )
 {
@@ -15,7 +16,8 @@ RaytracerImage Raytracer::raytrace( const Scene& scene, const int maxDepth )
 	{
 		for ( unsigned int c = 0; c < m_width; c++ )
 		{
-			Ray ray( m_eyeLocation, Vec3( c + 0.5f - m_width / 2, ( m_height / 2 ) - ( r + 0.5f ), 0 ) - m_eyeLocation );
+			Ray ray( m_eyeLocation,
+					 Vec3( c + 0.5f - m_width / 2, ( m_height / 2 ) - ( r + 0.5f ), 0 ) - m_eyeLocation );
 			IntersectionInfo intersection = intersect( scene, ray );
 			image.data[r][c] = computeColor( scene, ray, intersection, maxDepth ) * 255;
 		}
@@ -23,13 +25,9 @@ RaytracerImage Raytracer::raytrace( const Scene& scene, const int maxDepth )
 	return image;
 }
 
-Vec3 Raytracer::computeLight( const Vec3& direction,
-							  const Vec3& lightcolor,
-							  const Vec3& normal,
-							  const Vec3& halfVec,
+Vec3 Raytracer::computeLight( const Vec3& direction, const Vec3& lightcolor, const Vec3& normal, const Vec3& halfVec,
 							  const Material& material )
 {
-
 	float nDotL = normal.dot( direction );
 	nDotL = nDotL < 0 ? 0 : nDotL;
 	Vec3 lambert = material.diffuse * lightcolor * nDotL;
@@ -42,8 +40,7 @@ Vec3 Raytracer::computeLight( const Vec3& direction,
 	return retval;
 }
 
-IntersectionInfo Raytracer::intersect( const Scene& scene,
-									   const Ray& ray )
+IntersectionInfo Raytracer::intersect( const Scene& scene, const Ray& ray )
 {
 	IntersectionInfo intersection_final;
 	Vec3 pi, normal;
@@ -76,9 +73,7 @@ IntersectionInfo Raytracer::intersect( const Scene& scene,
 	return intersection_final;
 }
 
-Vec3 Raytracer::computeColor( const Scene& scene,
-							  const Ray& ray,
-							  const IntersectionInfo& intersection,
+Vec3 Raytracer::computeColor( const Scene& scene, const Ray& ray, const IntersectionInfo& intersection,
 							  const int maxDepth )
 {
 	Vec3 pixelColor;
@@ -104,7 +99,8 @@ Vec3 Raytracer::computeColor( const Scene& scene,
 			}
 			direction = direction.normalized();
 			Vec3 halfVec = ( direction - ray.direction() ).normalized();
-			Vec3 color = computeLight( direction, light.color, intersection.normal, halfVec, intersection.object->material() );
+			Vec3 color =
+				computeLight( direction, light.color, intersection.normal, halfVec, intersection.object->material() );
 			pixelColor = pixelColor + color;
 		}
 		pixelColor = intersection.object->material().ambient + intersection.object->material().emissive + pixelColor;
@@ -119,7 +115,8 @@ Vec3 Raytracer::computeColor( const Scene& scene,
 			if ( intersectionFromReflectedRay.object != nullptr )
 			{
 				Vec3 reflectedColor;
-				reflectedColor = computeColor( scene, reflectedRay, intersectionFromReflectedRay, maxDepth - 1 ) * intersection.object->material().reflectivity;
+				reflectedColor = computeColor( scene, reflectedRay, intersectionFromReflectedRay, maxDepth - 1 ) *
+								 intersection.object->material().reflectivity;
 				pixelColor = pixelColor + reflectedColor;
 			}
 		}
@@ -129,8 +126,8 @@ Vec3 Raytracer::computeColor( const Scene& scene,
 	return pixelColor;
 }
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 bool RaytracerImageSaver::save( const RaytracerImage& image, const char* filename, const FORMAT& format )
 {
@@ -143,7 +140,7 @@ bool RaytracerImageSaver::save( const RaytracerImage& image, const char* filenam
 		{
 			for ( const Vec3& pixel : row )
 			{
-				out << (int) pixel.x() << ' ' << (int) pixel.y() << ' ' << (int) pixel.z() << '\n';
+				out << (int)pixel.x() << ' ' << (int)pixel.y() << ' ' << (int)pixel.z() << '\n';
 			}
 		}
 		return true;

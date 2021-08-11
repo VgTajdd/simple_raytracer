@@ -22,7 +22,8 @@ int main( int argc, char* argv[] )
 	sphere2->pvtMaterial().diffuse = Vec3( 0.2f, 0.8f, 0.2f );
 	scene.addObject( sphere2 );
 
-	auto triangle = ObjectsFactory::createTriangle( Vec3( 300, -100, 400 ), Vec3( 0, -100, -600 ), Vec3( -300, -100, 400 ) );
+	auto triangle =
+		ObjectsFactory::createTriangle( Vec3( 300, -100, 400 ), Vec3( 0, -100, -600 ), Vec3( -300, -100, 400 ) );
 	scene.addObject( triangle );
 
 	scene.addLight( Vec3( -200, 0, 200 ), Vec3( 1, 1, 1 ), true );
@@ -32,8 +33,7 @@ int main( int argc, char* argv[] )
 	RaytracerImage image = raytracer.raytrace( scene, 2 );
 
 	bool ok = RaytracerImageSaver::save( image, "output.ppm", RaytracerImageSaver::FORMAT::PPM );
-	if ( ok )
-		system( "output.ppm" );
+	if ( ok ) system( "output.ppm" );
 
 	return 0;
 }

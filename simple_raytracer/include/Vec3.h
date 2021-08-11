@@ -12,13 +12,28 @@
 class Vec3
 {
 public:
-	Vec3( const float x = 0.f, const float y = 0.f, const float z = 0.f ) :
-		m_x( x ), m_y( y ), m_z( z ) {}
+	Vec3( const float x = 0.f, const float y = 0.f, const float z = 0.f )
+		: m_x( x )
+		, m_y( y )
+		, m_z( z )
+	{}
 
-	const float x() const { return m_x; }
-	const float y() const { return m_y; }
-	const float z() const { return m_z; }
-	const float length() const { return sqrtf( ( m_x * m_x ) + ( m_y * m_y ) + ( m_z * m_z ) ); }
+	const float x() const
+	{
+		return m_x;
+	}
+	const float y() const
+	{
+		return m_y;
+	}
+	const float z() const
+	{
+		return m_z;
+	}
+	const float length() const
+	{
+		return sqrtf( ( m_x * m_x ) + ( m_y * m_y ) + ( m_z * m_z ) );
+	}
 	Vec3 normalized() const
 	{
 		const float l = length();
@@ -27,19 +42,19 @@ public:
 		else
 			return Vec3();
 	}
-	Vec3 operator - ( const Vec3& other ) const
+	Vec3 operator-( const Vec3& other ) const
 	{
 		return Vec3( m_x - other.x(), m_y - other.y(), m_z - other.z() );
 	}
-	Vec3 operator + ( const Vec3& other ) const
+	Vec3 operator+( const Vec3& other ) const
 	{
 		return Vec3( m_x + other.x(), m_y + other.y(), m_z + other.z() );
 	}
-	Vec3 operator * ( const float scale ) const
+	Vec3 operator*( const float scale ) const
 	{
 		return Vec3( m_x * scale, m_y * scale, m_z * scale );
 	}
-	Vec3 operator * ( const Vec3& other ) const
+	Vec3 operator*( const Vec3& other ) const
 	{
 		return Vec3( m_x * other.m_x, m_y * other.m_y, m_z * other.m_z );
 	}
@@ -68,6 +83,7 @@ public:
 		Vec3 ans( x, y, z );
 		return ans;
 	}
+
 private:
 	float m_x;
 	float m_y;

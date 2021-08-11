@@ -8,6 +8,7 @@
 #define RAYTRACER_H_
 
 #include <vector>
+
 #include "Vec3.h"
 
 class Scene;
@@ -24,8 +25,9 @@ struct IntersectionInfo
 
 struct RaytracerImage
 {
-	RaytracerImage( const unsigned int w, const unsigned int h ):
-		width( w ), height( h )
+	RaytracerImage( const unsigned int w, const unsigned int h )
+		: width( w )
+		, height( h )
 	{
 		data.resize( h, std::vector<Vec3>() );
 		for ( unsigned int i = 0; i < w; i++ )
@@ -52,7 +54,10 @@ public:
 class Raytracer
 {
 public:
-	explicit Raytracer( const unsigned int w, unsigned int h ) : m_width( w ), m_height( h ) {}
+	explicit Raytracer( const unsigned int w, unsigned int h )
+		: m_width( w )
+		, m_height( h )
+	{}
 	void setEyeLocation( const Vec3& eyeLocation )
 	{
 		m_eyeLocation = eyeLocation;
@@ -61,19 +66,12 @@ public:
 	RaytracerImage raytrace( const Scene& scene, const int maxDepth );
 
 private:
-	Vec3 computeLight( const Vec3& direction,
-					   const Vec3& lightcolor,
-					   const Vec3& normal,
-					   const Vec3& halfvec,
+	Vec3 computeLight( const Vec3& direction, const Vec3& lightcolor, const Vec3& normal, const Vec3& halfvec,
 					   const Material& material );
 
-	IntersectionInfo intersect( const Scene& scene,
-								const Ray& ray );
+	IntersectionInfo intersect( const Scene& scene, const Ray& ray );
 
-	Vec3 computeColor( const Scene& scene,
-					   const Ray& ray,
-					   const IntersectionInfo& intersection,
-					   const int maxDepth );
+	Vec3 computeColor( const Scene& scene, const Ray& ray, const IntersectionInfo& intersection, const int maxDepth );
 
 private:
 	Vec3 m_eyeLocation;
