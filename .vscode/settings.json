@@ -1,5 +1,7 @@
 {
-    // "files.trimTrailingWhitespace": true, // Not necessary because clang format trims trailing whitespaces.
-    "clang-format.fallbackStyle": "Google",
-    "editor.formatOnSave": true
+    "clang-format.executable": "clang-format",
+    "clang-format.fallbackStyle": "Microsoft",
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
 }
