@@ -10,8 +10,8 @@
 
 - [X] Use CMake
 - [X] Use GitHub actions
-- [x] Add tests (gtest)
 - [x] Add copyright to files
+- [ ] Add tests (gtest)
 - [ ] Add/Update documentation
 
 ## OPTIONAL
