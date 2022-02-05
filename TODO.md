@@ -11,6 +11,8 @@
 - [X] Use CMake
 - [X] Use GitHub actions
 - [x] Add copyright to files
+- [ ] Refactor
+- [ ] Add scripts for linux and windows
 - [ ] Add tests (gtest)
 - [ ] Add/Update documentation
 
