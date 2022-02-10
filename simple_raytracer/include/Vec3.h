@@ -1,5 +1,5 @@
 // ========================================================================= //
-// Copyright (c) 2021 Agustin Jesus Durand Diaz.                             //
+// Copyright (c) 2022 Agustin Jesus Durand Diaz.                             //
 // This code is licensed under the Apache-2.0 License.                       //
 // Vec3.h                                                                    //
 // ========================================================================= //
@@ -7,6 +7,7 @@
 #ifndef VEC_3_H_
 #define VEC_3_H_
 
+#include <algorithm>
 #include <math.h>
 
 class Vec3
