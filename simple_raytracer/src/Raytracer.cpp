@@ -1,13 +1,14 @@
 // ========================================================================= //
-// Copyright (c) 2021 Agustin Jesus Durand Diaz.                             //
+// Copyright (c) 2022 Agustin Jesus Durand Diaz.                             //
 // This code is licensed under the Apache-2.0 License.                       //
 // Raytracer.cpp                                                             //
 // ========================================================================= //
 
 #include "Raytracer.h"
-
 #include "Ray.h"
+#include "RaytracerImage.h"
 #include "Scene.h"
+#include "SceneObject.h"
 
 RaytracerImage Raytracer::raytrace( const Scene& scene, const int maxDepth )
 {
@@ -124,31 +125,4 @@ Vec3 Raytracer::computeColor( const Scene& scene, const Ray& ray, const Intersec
 		pixelColor.clampValues( 0, 1 );
 	}
 	return pixelColor;
-}
-
-#include <fstream>
-#include <iostream>
-
-bool RaytracerImageSaver::save( const RaytracerImage& image, const char* filename, const FORMAT& format )
-{
-	if ( format == FORMAT::PPM )
-	{
-		std::ofstream out( filename );
-		std::cout << "Saving screenshot (ppm): " << filename << "\n";
-		out << "P3\n" << image.width << ' ' << image.height << ' ' << "255\n";
-		for ( const auto& row : image.data )
-		{
-			for ( const Vec3& pixel : row )
-			{
-				out << (int)pixel.x() << ' ' << (int)pixel.y() << ' ' << (int)pixel.z() << '\n';
-			}
-		}
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-
-	return true;
 }
