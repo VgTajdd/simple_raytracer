@@ -1,11 +1,15 @@
 // ========================================================================= //
-// Copyright (c) 2021 Agustin Jesus Durand Diaz.                             //
+// Copyright (c) 2022 Agustin Jesus Durand Diaz.                             //
 // This code is licensed under the Apache-2.0 License.                       //
 // main.cpp                                                                  //
 // ========================================================================= //
 
+#include "RayTracerImage.h"
+#include "RayTracerImageSaver.h"
 #include "Raytracer.h"
 #include "Scene.h"
+#include "SceneObject.h"
+#include "SceneObjectFactory.h"
 
 int main( int argc, char* argv[] )
 {
@@ -14,16 +18,16 @@ int main( int argc, char* argv[] )
 
 	Scene scene;
 
-	auto sphere1 = ObjectsFactory::createSphere( Vec3( 100, 0, -250 ), 100 );
+	auto sphere1{ SceneObjectFactory::createSphere( Vec3( 100, 0, -250 ), 100 ) };
 	sphere1->pvtMaterial().diffuse = Vec3( 0.8f, 0.2f, 0.2f );
 	scene.addObject( sphere1 );
 
-	auto sphere2 = ObjectsFactory::createSphere( Vec3( -100, 0, -100 ), 100 );
+	auto sphere2{ SceneObjectFactory::createSphere( Vec3( -100, 0, -100 ), 100 ) };
 	sphere2->pvtMaterial().diffuse = Vec3( 0.2f, 0.8f, 0.2f );
 	scene.addObject( sphere2 );
 
 	auto triangle =
-		ObjectsFactory::createTriangle( Vec3( 300, -100, 400 ), Vec3( 0, -100, -600 ), Vec3( -300, -100, 400 ) );
+		SceneObjectFactory::createTriangle( Vec3( 300, -100, 400 ), Vec3( 0, -100, -600 ), Vec3( -300, -100, 400 ) );
 	scene.addObject( triangle );
 
 	scene.addLight( Vec3( -200, 0, 200 ), Vec3( 1, 1, 1 ), true );
