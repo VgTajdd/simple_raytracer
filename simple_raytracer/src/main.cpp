@@ -4,9 +4,9 @@
 // main.cpp                                                                  //
 // ========================================================================= //
 
-#include "RayTracerImage.h"
-#include "RayTracerImageSaver.h"
 #include "Raytracer.h"
+#include "RaytracerImage.h"
+#include "RaytracerImageSaver.h"
 #include "Scene.h"
 #include "SceneObject.h"
 #include "SceneObjectFactory.h"

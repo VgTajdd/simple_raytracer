@@ -4,8 +4,8 @@
 // RaytracerImageSaver.cpp                                                   //
 // ========================================================================= //
 
-#include "RayTracerImageSaver.h"
-#include "RayTracerImage.h"
+#include "RaytracerImageSaver.h"
+#include "RaytracerImage.h"
 #include <fstream>
 #include <iostream>
 
