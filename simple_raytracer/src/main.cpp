@@ -5,7 +5,6 @@
 // ========================================================================= //
 
 #include "Raytracer.h"
-#include "RaytracerImage.h"
 #include "RaytracerImageSaver.h"
 #include "Scene.h"
 #include "SceneObject.h"
